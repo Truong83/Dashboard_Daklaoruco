@@ -1,0 +1,1224 @@
+<html lang="vi"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DASHBOARD BÁO CÁO DAKLAORUCO 2025</title>
+
+<!-- UI + Chart + Export libs -->
+<script src="https://cdn.tailwindcss.com"></script><style>body { margin: 0; }</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- Data Store -->
+<script id="dataStore" type="application/json">{"currentYear":2025,"currentMonth":10,"years":{"2024":{"keHoachNam":14000,"keHoachDoanhThuNam":18200,"months":{"1":{"thucHienThang":766.88,"keHoachThang":766.88,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":766.88},"2":{"thucHienThang":0,"keHoachThang":0,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0},"3":{"thucHienThang":48.31,"keHoachThang":210,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":862.51},"4":{"thucHienThang":550.78,"keHoachThang":1405,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":1413.29,"luyKeBan":0,"luyKeDoanhThu":0},"5":{"thucHienThang":650.08,"keHoachThang":1404.92,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":2063.36,"luyKeBan":0,"luyKeDoanhThu":0},"6":{"thucHienThang":942.62,"keHoachThang":1540,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":3087.46,"luyKeBan":0,"luyKeDoanhThu":0},"7":{"thucHienThang":589.65,"keHoachThang":1400,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":3677.11},"8":{"thucHienThang":1309.99,"keHoachThang":1400,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":4987.09},"9":{"thucHienThang":800.96,"keHoachThang":786.6,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":5870.13},"10":{"thucHienThang":1538.2,"keHoachThang":1710,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":7408.33},"11":{"thucHienThang":1773.12,"keHoachThang":1820,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":9181.45},"12":{"thucHienThang":1590.63,"keHoachThang":1680,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":11116.4}}},"2025":{"keHoachNam":13500,"keHoachDoanhThuNam":22531500,"months":{"1":{"thucHienThang":857.83,"keHoachThang":880,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":766.88},"2":{"thucHienThang":0,"keHoachThang":0,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":0},"3":{"thucHienThang":0,"keHoachThang":0,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":0,"luyKeThucHien":0},"4":{"thucHienThang":280.49,"keHoachThang":459,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":1413.29,"luyKeThucHien":1177.97},"5":{"thucHienThang":1250.59,"keHoachThang":1172.8,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":2063.36,"luyKeThucHien":2428.55},"6":{"thucHienThang":1358.09,"keHoachThang":1380.6,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":3087.46,"luyKeThucHien":3858.28},"7":{"thucHienThang":949.55,"keHoachThang":1278.87,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":3677.11,"luyKeThucHien":4807.83},"8":{"thucHienThang":1676.2,"keHoachThang":1620,"slBanThang":1249,"doanhThu":2125236,"luyKeCungKyNamTruoc":4987.09,"luyKeThucHien":6484.03,"luyKeBan":7854,"luyKeDoanhThu":14408574},"9":{"thucHienThang":1342.24,"keHoachThang":1585.75,"slBanThang":2063.23,"doanhThu":3401785.19,"luyKeCungKyNamTruoc":5870.13,"luyKeThucHien":7984.58,"luyKeBan":9917.23,"luyKeDoanhThu":17810359.21},"10":{"thucHienThang":2224.31,"keHoachThang":1990.3,"slBanThang":0,"doanhThu":0,"luyKeCungKyNamTruoc":7408.33,"luyKeThucHien":10240.58,"luyKeDoanhThu":5527021.19}}}}}</script>
+
+<style>
+  /* Toàn bộ phông chữ và bố cục */
+  body { 
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+    background-color: #284D2C; /* 🌿 Nền chính đổi sang màu xanh rừng */
+    color: #f0f4f1;
+  }
+
+  h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .chart-card { 
+    min-height: 340px; 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:flex-start; 
+  }
+
+  .canvas-wrap { 
+    flex:1; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    padding:8px; 
+  }
+
+  .chart-eq { 
+    width:100%; 
+    height:260px; 
+  }
+
+  /* Màu gradient phần chọn tháng */
+  .month-indicator { 
+    background: linear-gradient(135deg, #1b3d24 0%, #3b6e47 100%);
+  }
+
+  /* Trường auto tính */
+  .auto-calculated { 
+    background-color: #e6f9ed; 
+    border-color: #7cd992; 
+  }
+
+  /* Thanh biểu đồ */
+  .chart-bar { 
+    transition: all 0.5s ease-in-out;
+    transform-origin: bottom;
+  }
+  .chart-bar:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  /* Khối màu trắng nổi bật trên nền xanh */
+  .content-box {
+    background: #ffffff;
+    color: #1e293b;
+  }
+
+  /* Loading states */
+  .loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Stats cards */
+  .stat-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  /* Analysis text styling */
+  .analysis-text strong {
+    color: #dc2626;
+    font-weight: bold;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .chart-row {
+      flex-direction: column;
+    }
+    .analysis-sidebar {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .stat-card {
+      min-height: 120px;
+    }
+  }
+
+  /* Instruction text for cards */
+  .card-instruction {
+    font-size: 0.6rem;
+    opacity: 0.8;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+    .chart-eq-small { 
+    width:100%; 
+    height:200px; 
+  }
+  .analysis-text {
+    font-size: 15px !important;
+    line-height: 1.5;
+  }
+  .stat-card .text-xs {
+    font-size: 14px !important;
+    font-weight: 600;
+  }
+
+  /* Nút trở về đầu trang trong phần phân tích */
+  .back-to-top-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    align-self: flex-end;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .back-to-top-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  }
+  .analysis-sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+  .analysis-content {
+    flex-grow: 1;
+  }
+
+  /* FONT CHỮ CHO PHẦN NHẬP DỮ LIỆU THÁNG */
+  .input-section-title {
+    font-family: "Segoe UI Black", "Segoe UI", system-ui, sans-serif !important;
+    font-weight: 900 !important;
+  }
+  .input-section-label {
+    font-family: "Segoe UI Black", "Segoe UI", system-ui, sans-serif !important;
+    font-weight: 900 !important;
+  }
+  .input-section-subtitle {
+    font-family: "Segoe UI Black", "Segoe UI", system-ui, sans-serif !important;
+    font-weight: 900 !important;
+  }
+
+  /* FONT CHỮ CHO CÁC STATS CARDS */
+  .stat-card h3 {
+    font-family: "Segoe UI Black", "Segoe UI", system-ui, sans-serif !important;
+    font-weight: 900 !important;
+  }
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.inset-0{inset:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-3{margin-left:0.75rem}.ml-auto{margin-left:auto}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-6{height:1.5rem}.h-full{height:100%}.min-h-\[300px\]{min-height:300px}.w-6{width:1.5rem}.w-full{width:100%}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}@keyframes spin{to{transform:rotate(360deg)}}.animate-spin{animation:spin 1s linear infinite}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.self-center{align-self:center}.rounded{border-radius:0.25rem}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-green-200{--tw-border-opacity:1;border-color:rgb(187 247 208 / var(--tw-border-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-green-700{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-amber-500{--tw-gradient-from:#f59e0b var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-500{--tw-gradient-from:#22c55e var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 197 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-red-500{--tw-gradient-from:#ef4444 var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 68 68 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-amber-700{--tw-gradient-to:#b45309 var(--tw-gradient-to-position)}.to-blue-700{--tw-gradient-to:#1d4ed8 var(--tw-gradient-to-position)}.to-green-700{--tw-gradient-to:#15803d var(--tw-gradient-to-position)}.to-indigo-700{--tw-gradient-to:#4338ca var(--tw-gradient-to-position)}.to-purple-700{--tw-gradient-to:#7e22ce var(--tw-gradient-to-position)}.to-red-700{--tw-gradient-to:#b91c1c var(--tw-gradient-to-position)}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-4{padding-left:1rem;padding-right:1rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-green-800{--tw-text-opacity:1;color:rgb(22 101 52 / var(--tw-text-opacity, 1))}.text-sky-700{--tw-text-opacity:1;color:rgb(3 105 161 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.text-violet-700{--tw-text-opacity:1;color:rgb(109 40 217 / var(--tw-text-opacity, 1))}.opacity-25{opacity:0.25}.opacity-75{opacity:0.75}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-green-800:hover{--tw-bg-opacity:1;background-color:rgb(22 101 52 / var(--tw-bg-opacity, 1))}@media (min-width: 768px){.md\:block{display:block}.md\:p-5{padding:1.25rem}.md\:p-6{padding:1.5rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:w-1\/2{width:50%}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.lg\:flex-row{flex-direction:row}}</style></head>
+
+<body class="p-4 md:p-6">
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-5 rounded-lg shadow-lg flex items-center">
+      <svg class="animate-spin h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span class="ml-3 text-gray-700">Đang xử lý...</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="max-w-7xl mx-auto mb-6">
+    <h1 class="text-2xl md:text-4xl font-extrabold text-center text-white drop-shadow-md">
+      📊 DASHBOARD BÁO CÁO DAKLAORUCO
+    </h1>
+
+    <!-- MONTH SELECTOR -->
+    <div class="max-w-md mx-auto mt-4 rounded-lg shadow-md p-4 month-indicator">
+      <div class="grid grid-cols-3 gap-4 items-center">
+        <div>
+          <label class="block text-sm font-semibold text-white uppercase">Chọn tháng</label>
+          <select id="monthSelector" class="mt-1 p-2 border rounded w-full text-gray-700">
+            <option value="1">Tháng 1</option>
+            <option value="2">Tháng 2</option>
+            <option value="3">Tháng 3</option>
+            <option value="4">Tháng 4</option>
+            <option value="5">Tháng 5</option>
+            <option value="6" selected="">Tháng 6</option>
+            <option value="7">Tháng 7</option>
+            <option value="8">Tháng 8</option>
+            <option value="9">Tháng 9</option>
+            <option value="10">Tháng 10</option>
+            <option value="11">Tháng 11</option>
+            <option value="12">Tháng 12</option>
+          </select>
+        </div>
+        <div class="text-center">
+          <div class="text-white text-lg font-bold" id="currentMonthDisplay">THÁNG 10</div>
+          <div class="text-white text-sm">Dữ liệu đang xem</div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-white uppercase">Năm</label>
+          <select id="yearSelector" class="mt-1 p-2 border rounded w-full text-gray-700">
+            <option value="2024">2024</option>
+            <option value="2025" selected="">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+   
+	<p class="text-center font-bold uppercase mb-2">CHỌN VÀO Ô TƯƠNG ỨNG ĐỂ XEM BÁO CÁO CHI TIẾT KÈM BIỂU ĐỒ</p>
+  </header>
+
+  <!-- STATS CARDS -->
+  <section class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+    <!-- Card 1: SẢN LƯỢNG -->
+    <div id="cardProduction" class="stat-card bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">SẢN LƯỢNG (Tấn)</h3>
+      <div class="text-2xl font-extrabold" id="cardProdValue">2.224,31</div>
+      <div class="text-xs mt-1" id="cardProdPercent">75,86%</div>
+      
+    </div>
+
+    <!-- Card 2: BÁN HÀNG -->
+    <div id="cardSales" class="stat-card bg-gradient-to-br from-green-500 to-green-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">BÁN HÀNG (Tấn)</h3>
+      <div class="text-2xl font-extrabold" id="cardSalesValue">0,00</div>
+      <div class="text-xs mt-1" id="cardSalesPercent">0,00%</div>
+      
+    </div>
+
+    <!-- Card 3: DOANH THU (USD) -->
+    <div id="cardRevenue" class="stat-card bg-gradient-to-br from-amber-500 to-amber-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">DOANH THU (USD)</h3>
+      <div class="text-2xl font-extrabold" id="cardRevenueValue">0,00</div>
+      <div class="text-xs mt-1" id="cardRevenuePercent">24,53%</div>
+     
+    </div>
+
+    <!-- Card 4: KẾ HOẠCH NĂM VÀ LŨY KẾ THỰC HIỆN -->
+    <div id="cardPlan" class="stat-card bg-gradient-to-br from-red-500 to-red-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">KẾ HOẠCH SL NĂM &amp; LŨY KẾ</h3>
+      <div class="text-2xl font-extrabold" id="cardPlanValue">13.500,00</div>
+      <div class="text-xs mt-1" id="cardPlanPercent">75,86%</div>
+    
+    </div>
+
+    <!-- Card 5: TỶ LỆ HOÀN THÀNH NĂM -->
+    <div id="cardCompletion" class="stat-card bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">TỶ LỆ HOÀN THÀNH NĂM</h3>
+      <div class="text-2xl font-extrabold" id="cardCompletionValue">75,86%</div>
+      
+    </div>
+
+    <!-- Card 6: SO SÁNH VỚI CÙNG KỲ -->
+    <div id="cardComparison" class="stat-card bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl shadow-lg p-4 text-center text-white">
+      <h3 class="text-sm font-bold uppercase mb-2">SO SÁNH VỚI CÙNG KỲ</h3>
+      <div class="text-2xl font-extrabold" id="cardComparisonValue">38,23%</div>
+      <div class="text-xs mt-1" id="cardComparisonArrow">🔼</div>
+      
+    </div>
+  </section>
+ <p class="text-center text-gray-200 mt-2 text-sm md:text-base">
+      Nhập dữ liệu (định dạng: <code>1.234,56</code>) → LƯU → CẬP NHẬT
+    </p>
+  <!-- INPUT AREA -->
+  <section class="max-w-7xl mx-auto rounded-xl shadow-lg p-4 md:p-6 mb-8 content-box">
+    <h2 class="text-lg md:text-xl font-bold mb-4 input-section-title">NHẬP DỮ LIỆU THÁNG <span id="inputMonthDisplay">10</span></h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">THỰC HIỆN THÁNG</label>
+        <input id="thucHienThang" class="mt-1 p-2 border rounded w-full" placeholder="VD: 1.234,56">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">KẾ HOẠCH THÁNG</label>
+        <input id="keHoachThang" class="mt-1 p-2 border rounded w-full" placeholder="VD: 1.500,00">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">KẾ HOẠCH NĂM</label>
+        <input id="keHoachNam" class="mt-1 p-2 border rounded w-full" placeholder="VD: 15.000,00">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">
+          LŨY KẾ ĐẾN THÁNG <span id="luyKeMonthDisplay">10</span>
+        </label>
+        <input id="luyKeThucHien" class="mt-1 p-2 border rounded w-full" placeholder="Nhập lũy kế thực hiện">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label" id="luyKeCungKyLabel">LŨY KẾ CÙNG KỲ NĂM 2024</label>
+        <input id="luyKeCungKyNamTruoc" class="mt-1 p-2 border rounded w-full" placeholder="Nhập lũy kế cùng kỳ">
+      </div>
+    </div>
+
+    <hr class="my-4 border-green-200">
+
+    <h3 class="text-md font-bold mb-3 uppercase text-green-800 input-section-subtitle">Phần bán hàng</h3>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">SẢN LƯỢNG BÁN TRONG THÁNG</label>
+        <input id="slBanThang" class="mt-1 p-2 border rounded w-full" placeholder="VD: 1.200,00">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">LŨY KẾ BÁN</label>
+        <input id="luyKeBan" class="mt-1 p-2 border rounded w-full auto-calculated" placeholder="Nhập lũy kế bán">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">DOANH THU</label>
+        <input id="doanhThu" class="mt-1 p-2 border rounded w-full" placeholder="VD: 2.000.000,00">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">LŨY KẾ DOANH THU</label>
+        <input id="luyKeDoanhThu" class="mt-1 p-2 border rounded w-full" placeholder="Nhập lũy kế doanh thu">
+      </div>
+      <div>
+        <label class="block text-sm font-semibold uppercase input-section-label">KẾ HOẠCH DOANH THU NĂM</label>
+        <input id="keHoachDoanhThuNam" class="mt-1 p-2 border rounded w-full" placeholder="VD: 20.000.000,00">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-3 mt-5">
+      <button id="btnSave" class="bg-green-700 text-white px-4 py-2 rounded shadow hover:bg-green-800 text-sm md:text-base">💾 LƯU SỐ LIỆU</button>
+      <button id="btnUpdate" class="bg-emerald-600 text-white px-4 py-2 rounded shadow hover:bg-emerald-700 text-sm md:text-base">🔄 CẬP NHẬT BIỂU ĐỒ</button>
+      <button id="btnSaveFile" class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 text-sm md:text-base">💾 LƯU FILE</button>
+      <div class="ml-auto text-sm text-gray-500 self-center hidden md:block">Dạng nhập: <code>1.234,56</code></div>
+    </div>
+  </section>
+
+  <!-- CHART AREA - One chart per row with analysis beside -->
+  <section class="max-w-7xl mx-auto space-y-8">
+    <!-- Production chart -->
+    <div id="chartProductionSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-sky-700 mb-4 text-center">SẢN LƯỢNG (TẤN)</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+          <canvas id="chartProduction" class="w-full h-full" width="859" height="428" style="display: block; box-sizing: border-box; height: 343.1px; width: 687.2px;"></canvas>
+        </div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisProduction" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> THỰC HIỆN THÁNG = <strong>2.224,31</strong> tấn; KẾ HOẠCH THÁNG = <strong>1.990,30</strong> tấn.<br><strong>Công thức:</strong> Tỷ lệ hoàn thành tháng = (THỰC HIỆN THÁNG / KẾ HOẠCH THÁNG) × 100 = (<strong>2.224,31</strong> / <strong>1.990,30</strong>) × 100 = <strong>111,76%</strong>.<br>✅ Đã hoàn thành/vượt kế hoạch tháng.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sales chart -->
+    <div id="chartSalesSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-emerald-700 mb-4 text-center">BÁN HÀNG (TẤN)</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+          <canvas id="chartSales" class="w-full h-full" width="859" height="428" style="display: block; box-sizing: border-box; height: 343.1px; width: 687.2px;"></canvas>
+        </div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisSales" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> BÁN THÁNG = <strong>0,00</strong> tấn; LŨY KẾ BÁN = <strong>3.312,23</strong> tấn.<br><strong>Công thức:</strong> Tỷ lệ bán/thực hiện = (BÁN THÁNG / THỰC HIỆN THÁNG) × 100 = (<strong>0,00</strong> / <strong>2.224,31</strong>) × 100 = <strong>0,00%</strong>.<br>📈 Tốc độ bán tăng trưởng ổn định.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revenue chart -->
+    <div id="chartRevenueSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-amber-600 mb-4 text-center">DOANH THU (USD)</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+          <canvas id="chartRevenue" class="w-full h-full" width="859" height="428" style="display: block; box-sizing: border-box; height: 343.1px; width: 687.2px;"></canvas>
+        </div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisRevenue" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> DOANH THU THÁNG = <strong>0,00</strong> USD; LŨY KẾ DOANH THU = <strong>5.527.021,19</strong> USD.<br><strong>Công thức:</strong> Doanh thu bình quân = LŨY KẾ DOANH THU / LŨY KẾ BÁN = <strong>5.527.021,19</strong> / <strong>3.312,23</strong> = <strong>1.668,67</strong> USD/tấn.<br><strong>Tỷ lệ doanh thu:</strong> (<strong>5.527.021,19</strong> / <strong>22.531.500,00</strong>) × 100 = <strong>24,53%</strong> kế hoạch năm.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profit chart -->
+    <div id="chartProfitSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-rose-600 mb-4 text-center">SO SÁNH KẾ HOẠCH NĂM VÀ LŨY KẾ</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+          <canvas id="chartProfit" class="w-full h-full" width="859" height="428" style="display: block; box-sizing: border-box; height: 343.1px; width: 687.2px;"></canvas>
+        </div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisProfit" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> KẾ HOẠCH NĂM = <strong>13.500,00</strong> tấn; LŨY KẾ THỰC HIỆN = <strong>10.240,58</strong> tấn.<br><strong>Công thức:</strong> Tỷ lệ hoàn thành năm = (LŨY KẾ THỰC HIỆN / KẾ HOẠCH NĂM) × 100 = (<strong>10.240,58</strong> / <strong>13.500,00</strong>) × 100 = <strong>75,86%</strong>.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison chart - NEW -->
+    <div id="chartComparisonSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-indigo-600 mb-4 text-center">SO SÁNH LŨY KẾ SO VỚI CÙNG KỲ</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+          <canvas id="chartComparison" class="w-full h-full" width="745" height="375" style="display: block; box-sizing: border-box; height: 300px; width: 596px;"></canvas>
+        </div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisComparison" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> Lũy kế năm hiện tại: <strong>10.240,58</strong> tấn; Cùng kỳ năm trước: <strong>7.408,33</strong> tấn.<br><strong>Công thức:</strong> Tỷ lệ thay đổi = ((Lũy kế năm hiện tại - Lũy kế cùng kỳ năm trước) / Lũy kế cùng kỳ năm trước) × 100 = ((<strong>10.240,58</strong> - <strong>7.408,33</strong>) / <strong>7.408,33</strong>) × 100 = <strong>38,23%</strong>.<br>📈 Tăng so với cùng kỳ.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Percentage chart - REDUCED HEIGHT -->
+    <div id="chartPercentSection" class="bg-white shadow-lg rounded-xl p-4 md:p-5">
+      <h2 class="text-lg font-bold text-violet-700 mb-4 text-center">TỶ LỆ HOÀN THÀNH NĂM (%)</h2>
+      <div class="flex flex-col lg:flex-row gap-6 chart-row">
+        <div class="flex-1 min-h-[300px]">
+			<canvas id="chartPercent" class="chart-eq-small" width="859" height="375" style="display: block; box-sizing: border-box; height: 300px; width: 687.2px;"></canvas>
+		</div>
+        <div class="lg:w-1/2 analysis-sidebar">
+          <div class="analysis-content">
+            <p id="analysisPercent" class="analysis-text text-sm text-gray-700"><strong>Phân tích:</strong> Đến tháng 10 đã hoàn thành <strong>75,86%</strong> kế hoạch năm.<br><strong>Công thức:</strong> (∑ THỰC HIỆN THÁNG 1→10) / KẾ HOẠCH NĂM × 100 = <strong>10.240,58</strong> / <strong>13.500,00</strong> × 100 = <strong>75,86%</strong><br>✅ Tiến độ tốt, cần duy trì.</p>
+          </div>
+          <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            ⬆️ TRỞ VỀ ĐẦU TRANG
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY ANALYSIS -->
+  <section class="max-w-7xl mx-auto bg-white rounded-xl shadow-xl p-4 md:p-6 mt-8">
+    <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-3">PHÂN TÍCH TỔNG HỢP</h2>
+    <div id="summaryAnalysis" class="text-gray-700 analysis-text"><p><strong>- Tổng quan tháng 10:</strong> Sản lượng <strong>2.224,31</strong> tấn (<strong>111,76%</strong> kế hoạch), bán hàng <strong>0,00</strong> tấn, doanh thu <strong>0,00</strong> USD.</p><p><strong>- Lũy kế đến tháng 10:</strong> Thực hiện <strong>10.240,58</strong>/<strong>13.500,00</strong> tấn (<strong>75,86%</strong>), doanh thu <strong>5.527.021,19</strong> USD (<strong>24,53%</strong> kế hoạch).</p><p><strong>- Hiệu suất:</strong> Doanh thu bình quân <strong>1.668,67</strong> USD/tấn, tỷ lệ bán/thực hiện <strong>0,00%</strong>.</p><p><strong>- So sánh cùng kỳ:</strong> Lũy kế năm 2025 tăng <strong>38,23%</strong> so với cùng kỳ năm 2024 (<strong>10.240,58</strong> tấn so với <strong>7.408,33</strong> tấn).</p><p><strong>- Đề xuất:</strong> Cần tăng cường sản xuất và tiêu thụ để đạt kế hoạch năm. </p></div>
+  </section>
+
+<script>
+/* ---------- NEW DATA STRUCTURE FOR MULTI-MONTH ---------- */
+const STORE_KEY = 'daklaoruco_data';
+
+// Default structure
+const defaultStore = {
+  currentYear: 2025,
+  currentMonth: 6,
+  years: {
+    2024: {
+      keHoachNam: 12000,
+      keHoachDoanhThuNam: 20000000,
+      months: {
+        1: { thucHienThang: 1100, keHoachThang: 1200, slBanThang: 1000, doanhThu: 1800000, luyKeThucHien: 1100, luyKeBan: 1000, luyKeDoanhThu: 1800000, luyKeCungKyNamTruoc: 0 },
+        2: { thucHienThang: 1250, keHoachThang: 1300, slBanThang: 1150, doanhThu: 2000000, luyKeThucHien: 2350, luyKeBan: 2150, luyKeDoanhThu: 3800000, luyKeCungKyNamTruoc: 0 },
+        3: { thucHienThang: 1300, keHoachThang: 1400, slBanThang: 1200, doanhThu: 2100000, luyKeThucHien: 3650, luyKeBan: 3350, luyKeDoanhThu: 5900000, luyKeCungKyNamTruoc: 0 },
+        4: { thucHienThang: 1400, keHoachThang: 1500, slBanThang: 1300, doanhThu: 2300000, luyKeThucHien: 5050, luyKeBan: 4650, luyKeDoanhThu: 8200000, luyKeCungKyNamTruoc: 0 },
+        5: { thucHienThang: 1500, keHoachThang: 1600, slBanThang: 1400, doanhThu: 2500000, luyKeThucHien: 6550, luyKeBan: 6050, luyKeDoanhThu: 10700000, luyKeCungKyNamTruoc: 0 },
+        6: { thucHienThang: 1450, keHoachThang: 1500, slBanThang: 1350, doanhThu: 2400000, luyKeThucHien: 8000, luyKeBan: 7400, luyKeDoanhThu: 13100000, luyKeCungKyNamTruoc: 0 },
+        7: { thucHienThang: 1550, keHoachThang: 1600, slBanThang: 1450, doanhThu: 2600000, luyKeThucHien: 9550, luyKeBan: 8850, luyKeDoanhThu: 15700000, luyKeCungKyNamTruoc: 0 },
+        8: { thucHienThang: 1600, keHoachThang: 1650, slBanThang: 1500, doanhThu: 2700000, luyKeThucHien: 11150, luyKeBan: 10350, luyKeDoanhThu: 18400000, luyKeCungKyNamTruoc: 0 },
+        9: { thucHienThang: 1650, keHoachThang: 1700, slBanThang: 1550, doanhThu: 2800000, luyKeThucHien: 12800, luyKeBan: 11900, luyKeDoanhThu: 21200000, luyKeCungKyNamTruoc: 0 }
+      }
+    },
+    2025: {
+      keHoachNam: 15000,
+      keHoachDoanhThuNam: 20000000,
+      months: {
+        1: { thucHienThang: 1200, keHoachThang: 1300, slBanThang: 1100, doanhThu: 1900000, luyKeThucHien: 1200, luyKeBan: 1100, luyKeDoanhThu: 1900000, luyKeCungKyNamTruoc: 1100 },
+        2: { thucHienThang: 1350, keHoachThang: 1400, slBanThang: 1250, doanhThu: 2100000, luyKeThucHien: 2550, luyKeBan: 2350, luyKeDoanhThu: 4000000, luyKeCungKyNamTruoc: 2350 },
+        3: { thucHienThang: 1400, keHoachThang: 1500, slBanThang: 1300, doanhThu: 2200000, luyKeThucHien: 3950, luyKeBan: 3650, luyKeDoanhThu: 6200000, luyKeCungKyNamTruoc: 3650 },
+        4: { thucHienThang: 1500, keHoachThang: 1600, slBanThang: 1400, doanhThu: 2400000, luyKeThucHien: 5450, luyKeBan: 5050, luyKeDoanhThu: 8600000, luyKeCungKyNamTruoc: 5050 },
+        5: { thucHienThang: 1600, keHoachThang: 1700, slBanThang: 1500, doanhThu: 2600000, luyKeThucHien: 7050, luyKeBan: 6550, luyKeDoanhThu: 11200000, luyKeCungKyNamTruoc: 6550 },
+        6: { thucHienThang: 1585.75, keHoachThang: 1585.75, slBanThang: 1249, doanhThu: 2125236, luyKeThucHien: 8635.75, luyKeBan: 7799, luyKeDoanhThu: 13325236, luyKeCungKyNamTruoc: 8000 }
+      }
+    }
+  }
+};
+
+/* ---------- HELPERS ---------- */
+function parseVNNumber(str){
+  if(!str && str !== 0) return 0;
+  if(typeof str === 'number') return str;
+  const s = String(str).trim();
+  if(s === '') return 0;
+  const num = parseFloat(s.replace(/\./g, '').replace(/,/g, '.'));
+  return isNaN(num) ? 0 : num;
+}
+
+function formatVN(n, decimals=2){
+  return Number(n).toLocaleString('de-DE', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+}
+
+function showLoading() {
+  document.getElementById('loadingOverlay').classList.remove('hidden');
+  document.body.classList.add('loading');
+}
+
+function hideLoading() {
+  document.getElementById('loadingOverlay').classList.add('hidden');
+  document.body.classList.remove('loading');
+}
+
+/* ---------- STORE MANAGEMENT ---------- */
+function saveStore(obj, download = false) {
+  // Lưu vào localStorage (cho tiện sử dụng trên cùng máy)
+  localStorage.setItem(STORE_KEY, JSON.stringify(obj));
+  
+  // Lưu vào file HTML để chia sẻ
+  const dataElement = document.getElementById('dataStore');
+  dataElement.textContent = JSON.stringify(obj);
+  
+  // Chỉ download khi được yêu cầu rõ ràng
+  if (download) {
+    // Tạo file HTML mới với dữ liệu đã được cập nhật
+    const newHtml = document.documentElement.outerHTML;
+    
+    // Tạo blob và download file
+    const blob = new Blob([newHtml], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dashboard_daklaoruco.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
+
+function loadStore() {
+  // Ưu tiên đọc từ file HTML trước
+  const dataElement = document.getElementById('dataStore');
+  if (dataElement && dataElement.textContent.trim()) {
+    try {
+      return JSON.parse(dataElement.textContent);
+    } catch (e) {
+      console.error('Lỗi đọc dữ liệu từ file:', e);
+    }
+  }
+  
+  // Nếu không có trong file HTML, thử đọc từ localStorage
+  const raw = localStorage.getItem(STORE_KEY);
+  if (raw) {
+    try { 
+      return JSON.parse(raw);
+    } catch(e) { 
+      console.error('Lỗi đọc dữ liệu từ localStorage:', e);
+    }
+  }
+  
+  // Mặc định
+  return JSON.parse(JSON.stringify(defaultStore));
+}
+
+let store = loadStore();
+
+/* ---------- UI Refs ---------- */
+const elm = {
+  // Month selection
+  monthSelector: document.getElementById('monthSelector'),
+  yearSelector: document.getElementById('yearSelector'),
+  currentMonthDisplay: document.getElementById('currentMonthDisplay'),
+  inputMonthDisplay: document.getElementById('inputMonthDisplay'),
+  luyKeMonthDisplay: document.getElementById('luyKeMonthDisplay'),
+  luyKeCungKyLabel: document.getElementById('luyKeCungKyLabel'),
+  
+  // Input fields
+  thucHienThang: document.getElementById('thucHienThang'),
+  keHoachThang: document.getElementById('keHoachThang'),
+  keHoachNam: document.getElementById('keHoachNam'),
+  luyKeThucHien: document.getElementById('luyKeThucHien'),
+  luyKeCungKyNamTruoc: document.getElementById('luyKeCungKyNamTruoc'),
+  slBanThang: document.getElementById('slBanThang'),
+  luyKeBan: document.getElementById('luyKeBan'),
+  doanhThu: document.getElementById('doanhThu'),
+  luyKeDoanhThu: document.getElementById('luyKeDoanhThu'),
+  keHoachDoanhThuNam: document.getElementById('keHoachDoanhThuNam'),
+  
+  // Buttons
+  btnSave: document.getElementById('btnSave'),
+  btnUpdate: document.getElementById('btnUpdate'),
+  btnSaveFile: document.getElementById('btnSaveFile'),
+  
+  // Analysis texts
+  analysisProduction: document.getElementById('analysisProduction'),
+  analysisSales: document.getElementById('analysisSales'),
+  analysisRevenue: document.getElementById('analysisRevenue'),
+  analysisProfit: document.getElementById('analysisProfit'),
+  analysisPercent: document.getElementById('analysisPercent'),
+  analysisComparison: document.getElementById('analysisComparison'),
+  summaryAnalysis: document.getElementById('summaryAnalysis'),
+};
+
+/* ---------- MONTH MANAGEMENT ---------- */
+function getCurrentMonthData() {
+  const yearData = store.years[store.currentYear];
+  if (!yearData || !yearData.months) return {};
+  return yearData.months[store.currentMonth] || {};
+}
+
+function setCurrentMonthData(data) {
+  if (!store.years[store.currentYear]) {
+    store.years[store.currentYear] = { months: {} };
+  }
+  if (!store.years[store.currentYear].months) {
+    store.years[store.currentYear].months = {};
+  }
+  store.years[store.currentYear].months[store.currentMonth] = data;
+}
+
+function calculateLuyKeAutoValues() {
+  const yearData = store.years[store.currentYear];
+  if (!yearData || !yearData.months) return { luyKeThucHien: 0, luyKeBan: 0, luyKeDoanhThu: 0 };
+  
+  let luyKeThucHien = 0;
+  let luyKeBan = 0;
+  let luyKeDoanhThu = 0;
+  
+  for (let month = 1; month <= store.currentMonth; month++) {
+    const monthData = yearData.months[month];
+    if (monthData) {
+      luyKeThucHien += monthData.thucHienThang || 0;
+      luyKeBan += monthData.slBanThang || 0;
+      luyKeDoanhThu += monthData.doanhThu || 0;
+    }
+  }
+  
+  return { luyKeThucHien, luyKeBan, luyKeDoanhThu };
+}
+
+function getLuyKeValues() {
+  const currentData = getCurrentMonthData();
+  const autoValues = calculateLuyKeAutoValues();
+  
+  // Use manual values if provided, otherwise use auto-calculated
+  return {
+    luyKeThucHien: currentData.luyKeThucHien !== undefined ? currentData.luyKeThucHien : autoValues.luyKeThucHien,
+    luyKeBan: currentData.luyKeBan !== undefined ? currentData.luyKeBan : autoValues.luyKeBan,
+    luyKeDoanhThu: currentData.luyKeDoanhThu !== undefined ? currentData.luyKeDoanhThu : autoValues.luyKeDoanhThu
+  };
+}
+
+function updateMonthDisplay() {
+  elm.currentMonthDisplay.textContent = `THÁNG ${store.currentMonth}`;
+  elm.inputMonthDisplay.textContent = store.currentMonth;
+  elm.luyKeMonthDisplay.textContent = store.currentMonth;
+  
+  // Cập nhật label cho Lũy kế cùng kỳ
+  const previousYear = store.currentYear - 1;
+  elm.luyKeCungKyLabel.textContent = `LŨY KẾ CÙNG KỲ NĂM ${previousYear}`;
+}
+
+function populateInputs() {
+  const currentData = getCurrentMonthData();
+  const luyKe = getLuyKeValues();
+  const yearData = store.years[store.currentYear];
+  
+  // Fill inputs with current month data
+  elm.thucHienThang.value = currentData.thucHienThang ? formatVN(currentData.thucHienThang, 2) : '';
+  elm.keHoachThang.value = currentData.keHoachThang ? formatVN(currentData.keHoachThang, 2) : '';
+  
+  // KẾ HOẠCH NĂM and KẾ HOẠCH DOANH THU NĂM - preserve values when switching months
+  elm.keHoachNam.value = yearData?.keHoachNam ? formatVN(yearData.keHoachNam, 2) : '';
+  elm.keHoachDoanhThuNam.value = yearData?.keHoachDoanhThuNam ? formatVN(yearData.keHoachDoanhThuNam, 2) : '';
+  
+  elm.slBanThang.value = currentData.slBanThang ? formatVN(currentData.slBanThang, 2) : '';
+  elm.doanhThu.value = currentData.doanhThu ? formatVN(currentData.doanhThu, 2) : '';
+  
+  // Cumulative values - can be manual or auto
+  elm.luyKeThucHien.value = luyKe.luyKeThucHien ? formatVN(luyKe.luyKeThucHien, 2) : '';
+  elm.luyKeBan.value = luyKe.luyKeBan ? formatVN(luyKe.luyKeBan, 2) : '';
+  elm.luyKeDoanhThu.value = luyKe.luyKeDoanhThu ? formatVN(luyKe.luyKeDoanhThu, 2) : '';
+  
+  // Lũy kế cùng kỳ năm trước
+  elm.luyKeCungKyNamTruoc.value = currentData.luyKeCungKyNamTruoc ? formatVN(currentData.luyKeCungKyNamTruoc, 2) : '';
+  
+  // Update input styles based on whether values are manual or auto
+  updateInputStyles();
+}
+
+function updateInputStyles() {
+  const currentData = getCurrentMonthData();
+  
+  // Remove all auto-calculated styles first
+  elm.luyKeThucHien.classList.remove('auto-calculated');
+  elm.luyKeBan.classList.remove('auto-calculated');
+  elm.luyKeDoanhThu.classList.remove('auto-calculated');
+  
+  // Add style for auto-calculated fields
+  if (currentData.luyKeThucHien === undefined) {
+    elm.luyKeThucHien.classList.add('auto-calculated');
+  }
+  if (currentData.luyKeBan === undefined) {
+    elm.luyKeBan.classList.add('auto-calculated');
+  }
+  if (currentData.luyKeDoanhThu === undefined) {
+    elm.luyKeDoanhThu.classList.add('auto-calculated');
+  }
+}
+
+/* ---------- CHART SETUP WITH ANIMATIONS ---------- */
+const shadowPlugin = {
+  id: 'shadowPlugin',
+  beforeDatasetsDraw(chart, args, options) {
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.shadowColor = options.shadowColor || 'rgba(0,0,0,0.25)';
+    ctx.shadowBlur = options.shadowBlur ?? 15;
+    ctx.shadowOffsetX = options.shadowOffsetX ?? 0;
+    ctx.shadowOffsetY = options.shadowOffsetY ?? 8;
+  },
+  afterDatasetsDraw(chart, args, options) {
+    chart.ctx.restore();
+  }
+};
+
+Chart.register(shadowPlugin);
+
+let charts = {};
+function createEmptyCharts(){
+  const common = {
+    type:'bar',
+    data:{ labels:['Plan','Actual'], datasets:[{ 
+      data:[0,0], 
+      backgroundColor:'rgba(37,99,235,0.7)', 
+      borderRadius:8,
+      borderWidth: 2,
+      borderColor: 'rgba(255,255,255,0.8)'
+    }] },
+    options: {
+      responsive:true,
+      maintainAspectRatio:false,
+      animation:{ 
+        duration:1200, 
+        easing:'easeOutElastic',
+        delay: (context) => {
+          return context.dataIndex * 200;
+        }
+      },
+      plugins: { 
+        legend:{ display:false }, 
+        shadowPlugin:{ 
+          shadowColor:'rgba(0,0,0,0.25)', 
+          shadowBlur:15,
+          shadowOffsetY: 8
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          titleFont: { size: 14 },
+          bodyFont: { size: 14 },
+          padding: 12,
+          cornerRadius: 8,
+          displayColors: false
+        }
+      },
+      scales: { 
+        y:{ 
+          beginAtZero:true,
+          grid: {
+            color: 'rgba(0,0,0,0.1)'
+          },
+          ticks: {
+            font: { size: 12 }
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: { size: 12, weight: 'bold' }
+          }
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      }
+    }
+  };
+  
+  charts.production = new Chart(document.getElementById('chartProduction'), JSON.parse(JSON.stringify(common)));
+  charts.sales = new Chart(document.getElementById('chartSales'), JSON.parse(JSON.stringify(common)));
+  charts.revenue = new Chart(document.getElementById('chartRevenue'), JSON.parse(JSON.stringify(common)));
+  charts.profit = new Chart(document.getElementById('chartProfit'), JSON.parse(JSON.stringify(common)));
+
+  // Comparison chart - NEW
+  charts.comparison = new Chart(document.getElementById('chartComparison'), {
+    type: 'bar',
+    data: {
+      labels: ['NĂM HIỆN TẠI', 'CÙNG KỲ NĂM TRƯỚC'],
+      datasets: [{
+        data: [0, 0],
+        backgroundColor: ['rgba(99,102,241,0.85)', 'rgba(139,92,246,0.85)'],
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,0.8)'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 1200,
+        easing: 'easeOutElastic',
+        delay: (context) => {
+          return context.dataIndex * 200;
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        shadowPlugin: {
+          shadowColor: 'rgba(0,0,0,0.25)',
+          shadowBlur: 15,
+          shadowOffsetY: 8
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          titleFont: { size: 14 },
+          bodyFont: { size: 14 },
+          padding: 12,
+          cornerRadius: 8,
+          displayColors: false,
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${formatVN(context.parsed.y, 2)} tấn`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0,0,0,0.1)'
+          },
+          ticks: {
+            font: { size: 12 }
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            font: { size: 12, weight: 'bold' }
+          }
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      }
+    }
+  });
+
+  // Year completion doughnut with animations - with reduced height
+  charts.percent = new Chart(document.getElementById('chartPercent'), {
+    type:'doughnut',
+    data:{ 
+      labels:['ĐÃ HOÀN THÀNH','CÒN LẠI'], 
+      datasets:[{ 
+        data:[0,100], 
+        backgroundColor: ['rgba(16,185,129,0.85)','rgba(209,213,219,0.85)'], 
+        hoverBackgroundColor: ['rgba(16,185,129,1)','rgba(209,213,219,1)'],
+        borderWidth: 3,
+        borderColor: 'rgba(255,255,255,0.9)',
+        hoverOffset: 20
+      }]
+    },
+    options:{ 
+      responsive:true, 
+      maintainAspectRatio:false, 
+      cutout: '65%',
+      plugins:{ 
+        legend:{ 
+          position:'bottom',
+          labels: {
+            font: { size: 13 },
+            padding: 20
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.label}: ${context.parsed}%`;
+            }
+          }
+        }
+      }, 
+      animation:{
+        duration: 1500,
+        easing: 'easeOutQuart'
+      }
+    }
+  });
+}
+createEmptyCharts();
+
+/* ---------- UPDATE ALL VIEWS ---------- */
+function updateAllViews(){
+  showLoading();
+  
+  setTimeout(() => {
+    // Get current data
+    const currentData = getCurrentMonthData();
+    const luyKe = getLuyKeValues();
+    const yearData = store.years[store.currentYear];
+    
+    // Update stats cards
+    updateStatsCards(currentData, luyKe, yearData);
+    
+    // Update charts with current data
+    // Production chart
+    charts.production.data.labels = ['KẾ HOẠCH THÁNG','THỰC HIỆN THÁNG'];
+    charts.production.data.datasets[0].data = [currentData.keHoachThang || 0, currentData.thucHienThang || 0];
+    charts.production.data.datasets[0].backgroundColor = 'rgba(37,99,235,0.85)';
+    charts.production.update();
+
+    // Sales chart
+    charts.sales.data.labels = ['BÁN THÁNG','LŨY KẾ BÁN'];
+    charts.sales.data.datasets[0].data = [currentData.slBanThang || 0, luyKe.luyKeBan];
+    charts.sales.data.datasets[0].backgroundColor = 'rgba(16,185,129,0.85)';
+    charts.sales.update();
+
+    // Revenue chart
+    charts.revenue.data.labels = ['DOANH THU THÁNG','LŨY KẾ DOANH THU'];
+    charts.revenue.data.datasets[0].data = [currentData.doanhThu || 0, luyKe.luyKeDoanhThu];
+    charts.revenue.data.datasets[0].backgroundColor = 'rgba(250,204,21,0.85)';
+    charts.revenue.update();
+
+    // Profit chart - Year Plan vs Cumulative
+    charts.profit.data.labels = ['KẾ HOẠCH NĂM','LŨY KẾ THỰC HIỆN'];
+    charts.profit.data.datasets[0].data = [yearData?.keHoachNam || 0, luyKe.luyKeThucHien];
+    charts.profit.data.datasets[0].backgroundColor = 'rgba(244,63,94,0.85)';
+    charts.profit.update();
+
+    // Comparison chart - NEW
+    const luyKeHienTai = luyKe.luyKeThucHien;
+    const luyKeCungKy = currentData.luyKeCungKyNamTruoc || 0;
+    
+    charts.comparison.data.datasets[0].data = [luyKeHienTai, luyKeCungKy];
+    charts.comparison.update();
+
+    // Percent chart - Year completion
+    const keHoachNam = yearData?.keHoachNam || 1;
+    const tyLeHoanThanhNam = Math.min((luyKe.luyKeThucHien / keHoachNam) * 100, 100);
+    const conLai = 100 - tyLeHoanThanhNam;
+    
+    charts.percent.data.datasets[0].data = [tyLeHoanThanhNam, conLai];
+    charts.percent.update();
+
+    // Update analysis texts WITH FORMULAS and red bold styling
+    const pctMonth = currentData.keHoachThang === 0 ? 0 : +((currentData.thucHienThang || 0) / currentData.keHoachThang * 100).toFixed(2);
+    
+    elm.analysisProduction.innerHTML =
+      `<strong>Phân tích:</strong> THỰC HIỆN THÁNG = <strong>${formatVN(currentData.thucHienThang || 0,2)}</strong> tấn; KẾ HOẠCH THÁNG = <strong>${formatVN(currentData.keHoachThang || 0,2)}</strong> tấn.<br>` +
+      `<strong>Công thức:</strong> Tỷ lệ hoàn thành tháng = (THỰC HIỆN THÁNG / KẾ HOẠCH THÁNG) × 100 = (<strong>${formatVN(currentData.thucHienThang || 0,2)}</strong> / <strong>${formatVN(currentData.keHoachThang || 0,2)}</strong>) × 100 = <strong>${formatVN(pctMonth,2)}%</strong>.<br>` +
+      `${pctMonth>=100 ? '✅ Đã hoàn thành/vượt kế hoạch tháng.' : '⚠️ Chưa đạt kế hoạch, cần tăng cường khai thác.'}`;
+
+    const tyLeBanThang = currentData.slBanThang === 0 ? 0 : +((currentData.slBanThang || 0) / (currentData.thucHienThang || 1) * 100).toFixed(2);
+    elm.analysisSales.innerHTML =
+      `<strong>Phân tích:</strong> BÁN THÁNG = <strong>${formatVN(currentData.slBanThang || 0,2)}</strong> tấn; LŨY KẾ BÁN = <strong>${formatVN(luyKe.luyKeBan,2)}</strong> tấn.<br>` +
+      `<strong>Công thức:</strong> Tỷ lệ bán/thực hiện = (BÁN THÁNG / THỰC HIỆN THÁNG) × 100 = (<strong>${formatVN(currentData.slBanThang || 0,2)}</strong> / <strong>${formatVN(currentData.thucHienThang || 0,2)}</strong>) × 100 = <strong>${formatVN(tyLeBanThang,2)}%</strong>.<br>` +
+      `${luyKe.luyKeBan > 0 ? '📈 Tốc độ bán tăng trưởng ổn định' : '📉 Cần cải thiện tốc độ bán'}.`;
+
+    const doanhThuBinhQuan = luyKe.luyKeDoanhThu / Math.max(luyKe.luyKeBan, 1);
+    const keHoachDoanhThuNam = yearData?.keHoachDoanhThuNam || 0;
+    const tyLeDoanhThu = keHoachDoanhThuNam === 0 ? 0 : (luyKe.luyKeDoanhThu / keHoachDoanhThuNam * 100);
+    
+    elm.analysisRevenue.innerHTML =
+      `<strong>Phân tích:</strong> DOANH THU THÁNG = <strong>${formatVN(currentData.doanhThu || 0,2)}</strong> USD; LŨY KẾ DOANH THU = <strong>${formatVN(luyKe.luyKeDoanhThu,2)}</strong> USD.<br>` +
+      `<strong>Công thức:</strong> Doanh thu bình quân = LŨY KẾ DOANH THU / LŨY KẾ BÁN = <strong>${formatVN(luyKe.luyKeDoanhThu,2)}</strong> / <strong>${formatVN(luyKe.luyKeBan,2)}</strong> = <strong>${formatVN(doanhThuBinhQuan, 2)}</strong> USD/tấn.<br>` +
+      `<strong>Tỷ lệ doanh thu:</strong> (<strong>${formatVN(luyKe.luyKeDoanhThu,2)}</strong> / <strong>${formatVN(keHoachDoanhThuNam,2)}</strong>) × 100 = <strong>${formatVN(tyLeDoanhThu,2)}%</strong> kế hoạch năm.`;
+
+    elm.analysisProfit.innerHTML =
+      `<strong>Phân tích:</strong> KẾ HOẠCH NĂM = <strong>${formatVN(yearData?.keHoachNam || 0,2)}</strong> tấn; LŨY KẾ THỰC HIỆN = <strong>${formatVN(luyKe.luyKeThucHien,2)}</strong> tấn.<br>` +
+      `<strong>Công thức:</strong> Tỷ lệ hoàn thành năm = (LŨY KẾ THỰC HIỆN / KẾ HOẠCH NĂM) × 100 = (<strong>${formatVN(luyKe.luyKeThucHien,2)}</strong> / <strong>${formatVN(yearData?.keHoachNam || 0,2)}</strong>) × 100 = <strong>${formatVN(tyLeHoanThanhNam,2)}%</strong>.`;
+
+    // Comparison analysis - NEW
+    let tyLeThayDoi = 0;
+    let arrow = '→';
+    let trendText = 'Không thay đổi so với cùng kỳ.';
+    
+    if (luyKeCungKy !== 0) {
+      tyLeThayDoi = ((luyKeHienTai - luyKeCungKy) / luyKeCungKy) * 100;
+    }
+    
+    if (tyLeThayDoi > 0) {
+      arrow = '🔼';
+      trendText = '📈 Tăng so với cùng kỳ.';
+    } else if (tyLeThayDoi < 0) {
+      arrow = '🔽';
+      trendText = '📉 Giảm so với cùng kỳ.';
+    }
+    
+    elm.analysisComparison.innerHTML =
+      `<strong>Phân tích:</strong> Lũy kế năm hiện tại: <strong>${formatVN(luyKeHienTai,2)}</strong> tấn; Cùng kỳ năm trước: <strong>${formatVN(luyKeCungKy,2)}</strong> tấn.<br>` +
+      `<strong>Công thức:</strong> Tỷ lệ thay đổi = ((Lũy kế năm hiện tại - Lũy kế cùng kỳ năm trước) / Lũy kế cùng kỳ năm trước) × 100 = ((<strong>${formatVN(luyKeHienTai,2)}</strong> - <strong>${formatVN(luyKeCungKy,2)}</strong>) / <strong>${formatVN(luyKeCungKy,2)}</strong>) × 100 = <strong>${formatVN(tyLeThayDoi,2)}%</strong>.<br>` +
+      trendText;
+
+    elm.analysisPercent.innerHTML =
+      `<strong>Phân tích:</strong> Đến tháng ${store.currentMonth} đã hoàn thành <strong>${formatVN(tyLeHoanThanhNam,2)}%</strong> kế hoạch năm.<br>` +
+      `<strong>Công thức:</strong> (∑ THỰC HIỆN THÁNG 1→${store.currentMonth}) / KẾ HOẠCH NĂM × 100 = <strong>${formatVN(luyKe.luyKeThucHien,2)}</strong> / <strong>${formatVN(yearData?.keHoachNam || 0,2)}</strong> × 100 = <strong>${formatVN(tyLeHoanThanhNam,2)}%</strong><br>` +
+      `${tyLeHoanThanhNam >= 50 ? '✅ Tiến độ tốt, cần duy trì' : '⚠️ Cần đẩy mạnh sản xuất để đạt mục tiêu'}.`;
+
+    // Summary analysis
+    const summary = [];
+    summary.push(`<p><strong>- Tổng quan tháng ${store.currentMonth}:</strong> Sản lượng <strong>${formatVN(currentData.thucHienThang || 0,2)}</strong> tấn (<strong>${formatVN(pctMonth,2)}%</strong> kế hoạch), bán hàng <strong>${formatVN(currentData.slBanThang || 0,2)}</strong> tấn, doanh thu <strong>${formatVN(currentData.doanhThu || 0,2)}</strong> USD.</p>`);
+    summary.push(`<p><strong>- Lũy kế đến tháng ${store.currentMonth}:</strong> Thực hiện <strong>${formatVN(luyKe.luyKeThucHien,2)}</strong>/<strong>${formatVN(yearData?.keHoachNam || 0,2)}</strong> tấn (<strong>${formatVN(tyLeHoanThanhNam,2)}%</strong>), doanh thu <strong>${formatVN(luyKe.luyKeDoanhThu,2)}</strong> USD (<strong>${formatVN(tyLeDoanhThu,2)}%</strong> kế hoạch).</p>`);
+    summary.push(`<p><strong>- Hiệu suất:</strong> Doanh thu bình quân <strong>${formatVN(doanhThuBinhQuan, 2)}</strong> USD/tấn, tỷ lệ bán/thực hiện <strong>${formatVN(tyLeBanThang,2)}%</strong>.</p>`);
+    summary.push(`<p><strong>- So sánh cùng kỳ:</strong> Lũy kế năm ${store.currentYear} ${tyLeThayDoi > 0 ? 'tăng' : 'giảm'} <strong>${formatVN(Math.abs(tyLeThayDoi),2)}%</strong> so với cùng kỳ năm ${store.currentYear - 1} (<strong>${formatVN(luyKeHienTai,2)}</strong> tấn so với <strong>${formatVN(luyKeCungKy,2)}</strong> tấn).</p>`);
+    summary.push(`<p><strong>- Đề xuất:</strong> ${tyLeHoanThanhNam < 80 ? 'Cần tăng cường sản xuất và tiêu thụ để đạt kế hoạch năm.' : 'Duy trì hiệu suất hiện tại để hoàn thành vượt mức kế hoạch.'} ${tyLeThayDoi < 0 ? 'Đồng thời cần cải thiện hiệu suất so với cùng kỳ năm trước.' : ''}</p>`);
+    
+    elm.summaryAnalysis.innerHTML = summary.join('');
+
+    // Lưu dữ liệu nhưng KHÔNG tải file về
+    saveStore(store, false);
+    hideLoading();
+  }, 500);
+}
+
+/* ---------- UPDATE STATS CARDS ---------- */
+function updateStatsCards(currentData, luyKe, yearData) {
+  const keHoachNam = yearData?.keHoachNam || 0;
+  const keHoachDoanhThuNam = yearData?.keHoachDoanhThuNam || 0;
+  
+  // Card 1: SẢN LƯỢNG
+  const tyLeHoanThanhNam = keHoachNam === 0 ? 0 : (luyKe.luyKeThucHien / keHoachNam * 100);
+  document.getElementById('cardProdValue').textContent = formatVN(currentData.thucHienThang || 0, 2);
+  document.getElementById('cardProdPercent').textContent = `${formatVN(tyLeHoanThanhNam, 2)}%`;
+  
+  // Card 2: BÁN HÀNG
+  const tyLeBanThang = currentData.thucHienThang === 0 ? 0 : ((currentData.slBanThang || 0) / currentData.thucHienThang * 100);
+  document.getElementById('cardSalesValue').textContent = formatVN(currentData.slBanThang || 0, 2);
+  document.getElementById('cardSalesPercent').textContent = `${formatVN(tyLeBanThang, 2)}%`;
+  
+  // Card 3: DOANH THU (USD)
+  const tyLeDoanhThu = keHoachDoanhThuNam === 0 ? 0 : (luyKe.luyKeDoanhThu / keHoachDoanhThuNam * 100);
+  document.getElementById('cardRevenueValue').textContent = formatVN(currentData.doanhThu || 0, 2);
+  document.getElementById('cardRevenuePercent').textContent = `${formatVN(tyLeDoanhThu, 2)}%`;
+  
+  // Card 4: KẾ HOẠCH NĂM VÀ LŨY KẾ THỰC HIỆN
+  document.getElementById('cardPlanValue').textContent = formatVN(keHoachNam, 2);
+  document.getElementById('cardPlanPercent').textContent = `${formatVN(tyLeHoanThanhNam, 2)}%`;
+  
+  // Card 5: TỶ LỆ HOÀN THÀNH NĂM
+  document.getElementById('cardCompletionValue').textContent = `${formatVN(tyLeHoanThanhNam, 2)}%`;
+  
+  // Card 6: SO SÁNH VỚI CÙNG KỲ - NEW
+  const luyKeHienTai = luyKe.luyKeThucHien;
+  const luyKeCungKy = currentData.luyKeCungKyNamTruoc || 0;
+  let tyLeThayDoi = 0;
+  let arrow = '→';
+  
+  if (luyKeCungKy !== 0) {
+    tyLeThayDoi = ((luyKeHienTai - luyKeCungKy) / luyKeCungKy) * 100;
+  }
+  
+  if (tyLeThayDoi > 0) {
+    arrow = '🔼';
+  } else if (tyLeThayDoi < 0) {
+    arrow = '🔽';
+  }
+  
+  document.getElementById('cardComparisonValue').textContent = `${formatVN(Math.abs(tyLeThayDoi), 2)}%`;
+  document.getElementById('cardComparisonArrow').textContent = arrow;
+}
+
+/* ---------- EVENT LISTENERS ---------- */
+// Month/Year change
+elm.monthSelector.addEventListener('change', (e) => {
+  store.currentMonth = parseInt(e.target.value);
+  updateMonthDisplay();
+  populateInputs();
+  updateAllViews();
+});
+
+elm.yearSelector.addEventListener('change', (e) => {
+  store.currentYear = parseInt(e.target.value);
+  updateMonthDisplay();
+  populateInputs();
+  updateAllViews();
+});
+
+// Save button
+elm.btnSave.addEventListener('click', ()=>{
+  showLoading();
+  
+  setTimeout(() => {
+    const currentData = {
+      thucHienThang: parseVNNumber(elm.thucHienThang.value),
+      keHoachThang: parseVNNumber(elm.keHoachThang.value),
+      slBanThang: parseVNNumber(elm.slBanThang.value),
+      doanhThu: parseVNNumber(elm.doanhThu.value),
+      luyKeCungKyNamTruoc: parseVNNumber(elm.luyKeCungKyNamTruoc.value)
+    };
+    
+    // Save cumulative values only if manually entered (not empty)
+    const luyKeThucHienValue = parseVNNumber(elm.luyKeThucHien.value);
+    const luyKeBanValue = parseVNNumber(elm.luyKeBan.value);
+    const luyKeDoanhThuValue = parseVNNumber(elm.luyKeDoanhThu.value);
+    
+    const autoValues = calculateLuyKeAutoValues();
+    
+    // Only save manual values if they differ from auto-calculated
+    if (luyKeThucHienValue !== autoValues.luyKeThucHien) {
+      currentData.luyKeThucHien = luyKeThucHienValue;
+    }
+    if (luyKeBanValue !== autoValues.luyKeBan) {
+      currentData.luyKeBan = luyKeBanValue;
+    }
+    if (luyKeDoanhThuValue !== autoValues.luyKeDoanhThu) {
+      currentData.luyKeDoanhThu = luyKeDoanhThuValue;
+    }
+    
+    // Save year plan
+    if (!store.years[store.currentYear]) {
+      store.years[store.currentYear] = { months: {} };
+    }
+    store.years[store.currentYear].keHoachNam = parseVNNumber(elm.keHoachNam.value);
+    store.years[store.currentYear].keHoachDoanhThuNam = parseVNNumber(elm.keHoachDoanhThuNam.value);
+    
+    setCurrentMonthData(currentData);
+    
+    // Lưu dữ liệu nhưng KHÔNG tải file về
+    saveStore(store, false);
+    
+    populateInputs();
+    updateAllViews();
+    hideLoading();
+    alert(`✅ Đã lưu dữ liệu tháng ${store.currentMonth} năm ${store.currentYear} vào trình duyệt.`);
+  }, 300);
+});
+
+// Update button
+elm.btnUpdate.addEventListener('click', ()=> {
+  updateAllViews();
+});
+
+// Save File button - CHỈ ở đây mới tải file về
+elm.btnSaveFile.addEventListener('click', ()=>{
+  saveStore(store, true); // true = có download
+  alert('✅ Đã lưu file mới với dữ liệu hiện tại. File đã được tải xuống, bạn có thể chia sẻ file này cho người khác.');
+});
+
+// Card click events to scroll to charts
+document.getElementById('cardProduction').addEventListener('click', () => {
+  document.getElementById('chartProductionSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('cardSales').addEventListener('click', () => {
+  document.getElementById('chartSalesSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('cardRevenue').addEventListener('click', () => {
+  document.getElementById('chartRevenueSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('cardPlan').addEventListener('click', () => {
+  document.getElementById('chartProfitSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('cardCompletion').addEventListener('click', () => {
+  document.getElementById('chartPercentSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('cardComparison').addEventListener('click', () => {
+  document.getElementById('chartComparisonSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+/* ---------- INITIALIZE ---------- */
+// Set initial month selector value
+elm.monthSelector.value = store.currentMonth.toString();
+elm.yearSelector.value = store.currentYear.toString();
+
+updateMonthDisplay();
+populateInputs();
+updateAllViews();
+
+</script>
+
+</body></html>
